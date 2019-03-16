@@ -60,7 +60,7 @@
         </div>
 
         <div id="guessData" v-if="totalGuesses > 0">
-            <div id="guessCorrectStreak" class="guessStats">
+            <div id="guessCorrectStreak" class="guessStats" v-if="correctStreak > 0">
                 <span class="guessText">STREAK OF </span>
                 <span class="guessData">{{ correctStreak }}</span>
             </div>
@@ -69,7 +69,11 @@
                 <span class="guessData">{{ correctTotal }}<span>/</span>{{ totalGuesses }}</span>
             </div>
         </div>
+
+        <div id="footer">
+            <div v-if="quote && quote.quote">Original quotes courtesy of <a href="http://mydatamaster.com/free-downloads/" target="_blank">myDatamaster</a></div>
+            <div v-if="translatedText">Translation done with the help of <a href="https://azure.microsoft.com/en-gb/services/cognitive-services/translator-text-api/" target="_blank">Microsoft Translator API </a></div>
+        </div>
     </div>
     <script type="text/javascript" src="/js/mainVue.js"></script>
-
 </html>

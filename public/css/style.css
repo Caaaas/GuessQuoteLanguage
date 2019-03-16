@@ -511,3 +511,15 @@ html {
 #mainAppWrapper #guessData #guessCorrectStreak {
   margin: 0 20px 0 0;
 }
+#mainAppWrapper #footer {
+  margin: 20px 0;
+}
+#mainAppWrapper #footer div {
+  margin: 0 0 5px 0;
+  color: #d1cdce;
+  text-align: center;
+}
+#mainAppWrapper #footer div a {
+  color: #0d7377;
+  text-decoration: none;
+}
