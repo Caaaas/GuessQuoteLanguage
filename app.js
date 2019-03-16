@@ -5,7 +5,6 @@ if (env.error)
     throw env.error;
 process.env = dotenvParseVariables(env.parsed);
 
-const fs = require('fs');
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
