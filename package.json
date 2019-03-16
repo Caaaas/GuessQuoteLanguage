@@ -1,0 +1,31 @@
+{
+  "name": "guessquotelanguage",
+  "version": "1.0.0",
+  "description": "GuessQuoteLanguage",
+  "main": "app.js",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "cors": "^2.8.5",
+    "dotenv": "^7.0.0",
+    "dotenv-parse-variables": "^0.2.0",
+    "express": "^4.16.4",
+    "mongoose": "^5.4.19",
+    "mysql": "^2.16.0",
+    "nodemon": "^1.18.10",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Caaaas/GuessQuoteLanguage.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Caaaas/GuessQuoteLanguage/issues"
+  },
+  "homepage": "https://github.com/Caaaas/GuessQuoteLanguage#readme"
+}
