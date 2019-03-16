@@ -18,7 +18,7 @@ app.use(cors());
 
 app.use(express.static(path.join(__dirname, 'public')))
 
-const translate = require('./endpoints/api/translate');
+const translate = require('./routes/api/translate');
 app.use('/api/translate', translate);
 
 app.get("/", function (req, res) {
