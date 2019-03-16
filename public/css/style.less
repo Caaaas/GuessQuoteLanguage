@@ -1,0 +1,233 @@
+@import "colors";
+@import "normalize";
+
+* {
+    font-family: "Roboto", sans-serif !important;
+}
+
+body,
+html {
+    background-color: @color-dark;
+}
+
+#mainAppWrapper {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+
+    #mainTitleWrapper {
+        display: flex;
+        justify-content: center;
+        margin: 20px 0 0 0;
+
+        #mainTitle {
+            .disableTextSelection();
+            background-color: #d1cdce;
+            display: inline-block;
+            padding: 10px;
+            border-radius: 5px;
+
+            span {
+                display: block;
+                text-align: center;
+                color: @color-grey;
+            }
+
+            #mainTitleUpper {
+                font-size: 86px;
+                font-weight: 500;
+            }
+
+            #mainTitleRest {
+                font-size: 16px;
+                font-weight: 400;
+                margin: -20px 0 0 0;
+            }
+        }
+    }
+
+    #newlanguageTitleWrapper {
+        display: flex;
+        justify-content: center;
+        margin: 20px 0;
+
+        #newlanguageTitle {
+            .disableTextSelection();
+            background-color: #d1cdce;
+            color: #323232;
+            display: inline-block;
+            padding: 10px;
+            border-radius: 5px;
+            font-weight: 400;
+        }
+    }
+
+    .textWrapper {
+        background-color: @color-grey;
+        border-radius: 5px;
+
+        .textHeader {
+            .disableTextSelection();
+            background-color: @color-test;
+            color: #a1a09e;
+            padding: 5px 15px;
+            border-radius: 5px 5px 0 0;
+            font-weight: 600;
+            letter-spacing: 3px;
+        }
+
+        .text {
+            padding: 5px 15px;
+            color: #fff;
+
+            .quote {
+                display: block;
+            }
+
+            .author {
+                display: block;
+                margin: 10px 0 0 0;
+                font-style: italic;
+            }
+        }
+    }
+
+    #originalTextWrapper {
+        margin: 30px 0;
+    }
+
+    #translatedTextWrapper {}
+
+    #translatedTextOptionsWrapper {
+        display: flex;
+
+        .mobile( {
+            flex-wrap: wrap;
+        }
+
+        );
+
+        .translatedTextOption {
+            border: 2px solid #FFF;
+            color: #FFF;
+            flex: 1 1 0;
+            text-align: center;
+            padding: 20px;
+            margin: 0 10px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: .3s all;
+
+            .mobile( {
+                flex: 1 1 100%;
+                margin: 0 !important;
+                padding: 10px;
+                border-width: 1px;
+            }
+
+            );
+
+            &:first-of-type {
+                margin: 0 10px 0 0;
+            }
+
+            &:last-of-type {
+                margin: 0 0 0 10px;
+            }
+
+            &:hover {
+                background-color: #FFF;
+                color: @color-grey;
+            }
+
+            div {
+                .disableTextSelection();
+            }
+
+            &.correct {
+                background-color: green;
+            }
+
+            &.incorrect {
+                background-color: #dd403a !important;
+                border-color: #dd403a !important;
+            }
+
+            &.actualCorrect {
+                background-color: #87c38f !important;
+                border-color: #87c38f !important;
+            }
+
+            &.disable {
+                color: #FFF !important;
+                cursor: auto;
+
+                &:hover {
+                    background-color: inherit;
+                }
+            }
+        }
+    }
+
+    #getNewTranslation {
+        display: flex;
+        justify-content: center;
+
+        span {
+            .disableTextSelection();
+            display: inline-block;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #23395b;
+            color: #d1cdce;
+            font-size: 36px;
+            margin: 20px 0 0 0;
+            cursor: pointer;
+            letter-spacing: 1.5px;
+        }
+    }
+
+    #guessData {
+        margin: 20px 0;
+        display: flex;
+        justify-content: center;
+
+        .guessStats {
+            .disableTextSelection();
+            display: inline-block;
+            background-color: #d1cdce;
+            color: #323232;
+            border-radius: 5px;
+            padding: 10px;
+            font-size: 16px;
+            flex: 0 1 130px;
+            white-space: nowrap;
+            text-align: center;
+        }
+
+        #guessCorrectStreak {
+            margin: 0 20px 0 0;
+        }
+
+        #guessCorrectTotal {}
+    }
+}
+
+.disableTextSelection() {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.mobile(@rules) {
+    @media only screen and (max-width: 750px) {
+        @rules();
+    }
+}

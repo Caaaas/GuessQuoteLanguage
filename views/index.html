@@ -1,0 +1,75 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Guess the Language!</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i"
+        rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <div id="mainAppWrapper">
+        <div id="mainTitleWrapper">
+            <div id="mainTitle">
+                <span id="mainTitleUpper">GUESS</span>
+                <span id="mainTitleRest">the language of the translated quote!</span>
+            </div>
+        </div>
+
+        <div id="originalTextWrapper" class="textWrapper" v-if="quote">
+            <div class="textHeader">ORIGINAL</div>
+            <div class="text">
+                <span class="quote">{{ quote.quote }}</span>
+                <span class="author">- {{ quote.name }}</span>
+            </div>
+        </div>
+
+        <div id="translatedTextWrapper" class="textWrapper" v-if="translatedText">
+            <div class="textHeader">TRANSLATED</div>
+            <div class="text">
+                <span class="quote">{{ translatedText }}</span>
+                <span class="author">- {{ quote.name }}</span>
+            </div>
+        </div>
+
+        <div id="newlanguageTitleWrapper" v-if="languages">
+            <div id="newlanguageTitle">
+                THE NEW LANGUAGE IS
+            </div>
+        </div>
+
+        <div id="translatedTextOptionsWrapper">
+            <div class="translatedTextOption" v-for="language in languages" :class="{correct: language.correct === true, incorrect: language.incorrect === true, actualCorrect: (newLanguage.language == language.language && guessThisRound), disable: guessThisRound}"
+                v-on:click="guess(language.language, language)">
+                <div>{{ language.name }}</div>
+            </div>
+        </div>
+
+        <div id="getNewTranslation" v-if="guessThisRound" @click="getNewTranslation">
+            <span>AGAIN!</span>
+        </div>
+
+        <div id="guessData" v-if="totalGuesses > 0">
+            <div id="guessCorrectStreak" class="guessStats">
+                <span class="guessText">STREAK OF </span>
+                <span class="guessData">{{ correctStreak }}</span>
+            </div>
+            <div id="guessCorrectTotal" class="guessStats">
+                <span class="guessText">TOTAL SCORE </span>
+                <span class="guessData">{{ correctTotal }}<span>/</span>{{ totalGuesses }}</span>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="/js/mainVue.js"></script>
+
+</html>
