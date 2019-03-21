@@ -18,7 +18,7 @@ var app = new Vue({
         getNewTranslation: function () {
             if (!this.gettingNewData) {
                 this.gettingNewData = true;
-                axios.get('/api/translate').then((res) => {
+                axios.get('api/translate').then((res) => {
                     this.languages = res.data.languages;
                     this.newLanguage = res.data.newLanguage;
                     this.translatedText = res.data.translatedText;
