@@ -8,4 +8,4 @@ Shows option to get a new quote after a guess has been made.
 Done to get the hang of Vue.js and MongoDB a bit better.
 
 Database is MongoDB.
-Translation service is Microsoft Translation 
+Translation service is Yandex. 
