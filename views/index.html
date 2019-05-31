@@ -34,12 +34,20 @@
             </div>
         </div>
 
+        <div class="termsWrapper">
+            <div v-if="quote && quote.quote">Original quotes courtesy of <a href="http://mydatamaster.com/free-downloads/" target="_blank">myDatamaster</a></div>
+        </div>
+
         <div id="translatedTextWrapper" class="textWrapper" v-if="translatedText">
             <div class="textHeader">TRANSLATED</div>
             <div class="text">
                 <span class="quote">{{ translatedText }}</span>
                 <span class="author">- {{ quote.name }}</span>
             </div>
+        </div>
+
+        <div class="termsWrapper">
+            <div v-if="translatedText"><a href="http://translate.yandex.com/" target="_blank">Powered by Yandex.Translate</a></div>
         </div>
 
         <div id="newlanguageTitleWrapper" v-if="languages">
@@ -68,11 +76,6 @@
                 <span class="guessText">TOTAL SCORE </span>
                 <span class="guessData">{{ correctTotal }}<span>/</span>{{ totalGuesses }}</span>
             </div>
-        </div>
-
-        <div id="footer">
-            <div v-if="quote && quote.quote">Original quotes courtesy of <a href="http://mydatamaster.com/free-downloads/" target="_blank">myDatamaster</a></div>
-            <div v-if="translatedText">Translation done with the help of <a href="https://azure.microsoft.com/en-gb/services/cognitive-services/translator-text-api/" target="_blank">Microsoft Translator API </a></div>
         </div>
     </div>
     <script type="text/javascript" src="js/mainVue.js"></script>

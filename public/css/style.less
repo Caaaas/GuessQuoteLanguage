@@ -96,8 +96,6 @@ html {
         margin: 30px 0;
     }
 
-    #translatedTextWrapper {}
-
     #translatedTextOptionsWrapper {
         display: flex;
 
@@ -212,20 +210,22 @@ html {
         #guessCorrectStreak {
             margin: 0 20px 0 0;
         }
-
-        #guessCorrectTotal {}
     }
 
-    #footer {
+    .termsWrapper {
         margin: 20px 0;
         div {
             margin: 0 0 5px 0;
-            color: #d1cdce;
+            color: #FFF;
             text-align: center;
 
             a {
-                color: @color-blue-dark;
+                color: #FFF;
                 text-decoration: none;
+
+                &:hover {
+                    color: @color-blue-dark;
+                }
             }
         }
     }

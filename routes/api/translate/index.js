@@ -2,34 +2,13 @@ const express = require('express');
 const axios = require('axios');
 const router = express.Router();
 const QuoteModel = require.main.require('./models/quoteModel').QuoteModel;
-
-const azuerAxios = axios.create({
-    headers: {
-        'Ocp-Apim-Subscription-Key': process.env.API_KEY
-    }
-})
+const LanguagesModel = require.main.require('./models/languagesModel').LanguagesModel;
 
 let languages = [];
 
-let getLanguages = async function () {
-    return new Promise(async (resolve, reject) => {
-        await azuerAxios.get('https://api.cognitive.microsofttranslator.com/languages?api-version=3.0&scope=translation')
-            .then(function (response) {
-                for (key in response.data.translation) {
-                    var value = response.data.translation[key];
-                    value.language = key;
-                    value.correct = null; // Used in vue
-                    value.incorrect = null; // Used in vue
-                    languages.push(value);
-                }
-                return resolve(response.data);
-            })
-            .catch(function (error) {
-                return resolve(error);
-            });
-    });
-}
-getLanguages();
+LanguagesModel.getLanguages().then((resolve) => {
+    languages = resolve;
+});
 
 // GET
 router.get('/', async (req, res) => {
@@ -48,20 +27,16 @@ router.get('/', async (req, res) => {
         languages: await randomLanguages,
         newLanguage: await translateTo[0],
         quote: await randomQuote,
-        translatedText: await translatedText[0].text,
+        translatedText: await translatedText,
     });
 });
 
 let translate = async function (from, to, text) {
-    var postData = [{
-        'Text': text
-    }]
+    var url = "https://translate.yandex.net/api/v1.5/tr.json/translate?key=" + process.env.API_KEY + "&text=" + text + "&lang=" + from + "-" + to;
     return new Promise(async (resolve, reject) => {
-        await azuerAxios.post('https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=' + from + '&to=' + to,
-                postData
-            )
+        await axios.get(url)
             .then(function (response) {
-                return resolve(response.data[0].translations);
+                return resolve(response.data.text[0]);
             })
             .catch(function (error) {
                 return resolve(error);
