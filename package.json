@@ -4,7 +4,7 @@
   "description": "GuessQuoteLanguage",
   "main": "app.js",
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.18.1",
     "cors": "^2.8.5",
     "dotenv": "^7.0.0",
     "dotenv-parse-variables": "^0.2.0",
